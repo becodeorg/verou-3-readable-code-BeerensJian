@@ -10,15 +10,13 @@ $toPrint = 'A ';
 $p = calc_cts($type);
 
     $address = 'unknown';
-    if($fw == 'koen'){
+    if($fw == 'koen')
+    {
         $address = 'a yacht in Antwerp';
-    } 
-    
-    elseif ($fw == 'manuele'){
+    } elseif ($fw == 'manuele')
+    {
         $address = 'somewhere in Belgium';
-    }
-    
-    elseif ($fw == 'students') {
+    } elseif ($fw == 'students') {
         $address = 'BeCode office';
     }
 

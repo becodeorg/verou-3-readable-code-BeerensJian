@@ -1,12 +1,12 @@
 <?php
 
 //$person = for who
-function order_pizza($pizzatype, $person) {
+function order_pizza($pizzaType, $person) {
 
     echo 'Creating new order... <br>';
     $toPrint = 'A ';
-    $toPrint .= $pizzatype;
-    $price = calc_cts($pizzatype);
+    $toPrint .= $pizzaType;
+    $price = CalcPrice($pizzaType);
 
     $address = 'unknown';
     if($person == 'koen') {
@@ -25,56 +25,32 @@ function order_pizza($pizzatype, $person) {
 
 }
 
-function total_price($price) {
-    return $price;
-}
+function CalcPrice($pizzaType) {
+    $cost = 0;
 
-        function test($p_type) {
-            echo "Test: type is {$p_type}. <br>";
-        }
-
-function calc_cts($p_type)
-{
-    $cst = 'unknown';
-
-    if ($p_type == 'marguerita') {
-        $cst = 5;
-    }
-    else
-        {
-        if ($p_type == 'golden')
-        {
-            $cst = 100;
-        }
-
-            if ($p_type == 'calzone')
-            {
-                $cst = 10;
-            }
-
-        if ($p_type == 'hawaii') {
-            throw new Exception('Computer says no');
-        }
+    if ($pizzaType == 'marguerita') {
+        $cost = 5;
+    } else if($pizzaType == 'golden') {
+        $cost = 100;
+    } else if ($pizzaType == 'calzone') {
+        $cost = 10;
+    } else if ($pizzaType == 'hawaii') {
+        throw new Exception('Computer says no');
     }
 
-    return $cst;
+    return $cost;
 }
 
-            function ordr_piz_all()
-            {
-            $test= 0;
-            order_pizza('calzone', 'koen');
-            order_pizza('marguerita', 'manuele');
-
-            order_pizza('golden', 'students');
-            }
-
-function make_Allhappy($do_it) {
-if ($do_it) {
-        ordr_piz_all();
-    } else {
-        // Should not do anything when false
-    }
+function orderPizza4All() {
+    order_pizza('calzone', 'koen');
+    order_pizza('marguerita', 'manuele');
+    order_pizza('golden', 'students');
 }
 
-make_Allhappy(true);
+function makeAllHappy($do_it) {
+    if ($do_it) {
+        orderPizza4All();
+    } 
+}
+
+makeAllHappy(true);
