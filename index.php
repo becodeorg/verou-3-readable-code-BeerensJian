@@ -1,12 +1,10 @@
 <?php
 
 //$person = for who
-function order_pizza($pizzaType, $person) {
+function orderPizza($pizzaType, $person) {
 
     echo 'Creating new order... <br>';
-    $toPrint = 'A ';
-    $toPrint .= $pizzaType;
-    $price = CalcPrice($pizzaType);
+    $price = calcPrice($pizzaType);
 
     $address = 'unknown';
     if($person == 'koen') {
@@ -17,15 +15,13 @@ function order_pizza($pizzaType, $person) {
         $address = 'BeCode office';
     }
 
-    $toPrint .=   "pizza should be sent to {$person} <br>The address: {$address}.";
-    echo $toPrint;
-    echo '<br>';
-    echo "The bill is € {$price} .<br>";
-    echo "Order finished.<br><br>";
+    $toPrint = "A {$pizzaType} pizza should be sent to {$person} <br>The address: {$address}.";
+    echo $toPrint . "<br>";
+    echo "The bill is € {$price} . <br>Order finished. <br><br>";
 
 }
 
-function CalcPrice($pizzaType) {
+function calcPrice($pizzaType) {
     $cost = 0;
 
     if ($pizzaType == 'marguerita') {
@@ -36,21 +32,17 @@ function CalcPrice($pizzaType) {
         $cost = 10;
     } else if ($pizzaType == 'hawaii') {
         throw new Exception('Computer says no');
+    } else {
+        throw new Exception('Chose a better pizza');
     }
 
     return $cost;
 }
 
 function orderPizza4All() {
-    order_pizza('calzone', 'koen');
-    order_pizza('marguerita', 'manuele');
-    order_pizza('golden', 'students');
+    orderPizza('calzone', 'koen');
+    orderPizza('marguerita', 'manuele');
+    orderPizza('golden', 'students');
 }
 
-function makeAllHappy($do_it) {
-    if ($do_it) {
-        orderPizza4All();
-    } 
-}
-
-makeAllHappy(true);
+orderPizza4All();
