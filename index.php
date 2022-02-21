@@ -1,12 +1,17 @@
 <?php
 
-//$person = for who
-function orderPizza($pizzaType, $person) {
+function orderPizza($pizzaType, $person) 
+{
+    $price = getPrice($pizzaType);
+    $address = getAddress($person);
 
     echo 'Creating new order... <br>';
-    $price = calcPrice($pizzaType);
+    echo "A {$pizzaType} pizza should be sent to {$person} <br>The address: {$address}.<br>";
+    echo "The bill is € {$price} . <br>Order finished. <br><br>";
+}
 
-    $address = 'unknown';
+function getAddress($person) 
+{
     if ($person == 'koen') {
         $address = 'a yacht in Antwerp';
     } elseif ($person == 'manuele') {
@@ -14,35 +19,31 @@ function orderPizza($pizzaType, $person) {
     } elseif ($person == 'students') {
         $address = 'BeCode office';
     }
-
-    $toPrint = "A {$pizzaType} pizza should be sent to {$person} <br>The address: {$address}.";
-    echo $toPrint . "<br>";
-    echo "The bill is € {$price} . <br>Order finished. <br><br>";
-
+    return $address;
 }
 
-function calcPrice($pizzaType) {
-    $cost = 0;
+function getPrice($pizzaType) 
+{
 
     if ($pizzaType == 'marguerita') {
         $cost = 5;
-    } else if($pizzaType == 'golden') {
+    } else if ($pizzaType == 'golden') {
         $cost = 100;
     } else if ($pizzaType == 'calzone') {
         $cost = 10;
     } else if ($pizzaType == 'hawaii') {
         throw new Exception('Computer says no');
     } else {
-        throw new Exception('Chose a better pizza');
+        throw new Exception('Choose a better pizza');
     }
 
     return $cost;
 }
 
-function orderPizza4All() {
+function placeOrders() {
     orderPizza('calzone', 'koen');
     orderPizza('marguerita', 'manuele');
     orderPizza('golden', 'students');
 }
 
-orderPizza4All();
+placeOrders();
