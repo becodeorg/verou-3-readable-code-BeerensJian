@@ -7,7 +7,7 @@ function orderPizza($pizzaType, $person) {
     $price = calcPrice($pizzaType);
 
     $address = 'unknown';
-    if($person == 'koen') {
+    if ($person == 'koen') {
         $address = 'a yacht in Antwerp';
     } elseif ($person == 'manuele') {
         $address = 'somewhere in Belgium';
